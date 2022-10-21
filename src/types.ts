@@ -1,1 +1,1 @@
-export type PlotType = "dots";
+export type PlotType = "dots" | "pixels";
