@@ -7,7 +7,7 @@ const sketch = (s: any) => {
     s.createCanvas(WIDTH, HEIGHT);
     s.background(BACKGROUND);
     s.fill(FOREGROUND);
-    s.stroke(FOREGROUND);
+    s.noStroke();
 
     for (let y = 10; y < HEIGHT; y += 20) {
       for (let x = 10; x < WIDTH; x += 20) {

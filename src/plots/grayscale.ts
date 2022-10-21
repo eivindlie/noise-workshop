@@ -8,12 +8,12 @@ const sketch = (s: any) => {
   s.setup = () => {
     s.createCanvas(WIDTH, HEIGHT);
     s.background(BACKGROUND);
+    s.noStroke();
 
     for (let y = 0; y < HEIGHT; y += RECT_SIZE) {
       for (let x = 0; x < WIDTH; x += RECT_SIZE) {
         const intensity = getNoiseValue(x, y) * 128 + 127;
         s.fill(intensity);
-        s.stroke(intensity);
         s.rect(x, y, RECT_SIZE, RECT_SIZE);
       }
     }
