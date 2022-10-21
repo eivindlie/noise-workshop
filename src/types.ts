@@ -1,1 +1,1 @@
-export type PlotType = "dots" | "pixels";
+export type PlotType = "dots" | "grayscale";

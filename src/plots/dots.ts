@@ -5,23 +5,21 @@ import { getNoiseValue } from "../getNoiseValue";
 const sketch = (s: any) => {
   s.setup = () => {
     s.createCanvas(WIDTH, HEIGHT);
-  };
-
-  s.draw = () => {
     s.background(BACKGROUND);
     s.fill(FOREGROUND);
     s.stroke(FOREGROUND);
 
     for (let y = 10; y < HEIGHT; y += 20) {
       for (let x = 10; x < WIDTH; x += 20) {
-        const size = getNoiseValue(x / WIDTH, y / HEIGHT) * 20;
+        const size = getNoiseValue(x, y) * 10 + 10;
         s.ellipse(x, y, size, size);
       }
     }
   };
+
+  s.draw = () => {};
 };
 
 export const initDots = (): p5 => {
-  const sketchInstance = new p5(sketch);
-  return sketchInstance;
+  return new p5(sketch);
 };

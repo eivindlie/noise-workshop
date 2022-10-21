@@ -1,8 +1,11 @@
 import "./style.css";
 import { initDots } from "./plots/dots";
 import { PlotType } from "./types";
+import p5 from "p5";
+import { initPixels } from "./plots/grayscale";
 
-let selectedType: PlotType = "dots";
+let typeSelect = document.getElementById("type-select") as HTMLSelectElement;
+let selectedType: PlotType = typeSelect.value as PlotType;
 
 document
   .getElementById("type-select")
@@ -11,10 +14,19 @@ document
     updateType();
   });
 
+let currentSketch: p5 | undefined;
+
 const updateType = () => {
+  if (currentSketch) {
+    currentSketch.remove();
+  }
   switch (selectedType) {
     case "dots":
-      initDots();
+      currentSketch = initDots();
+      break;
+    case "grayscale":
+      currentSketch = initPixels();
+      break;
   }
 };
 
