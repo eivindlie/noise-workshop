@@ -6,6 +6,8 @@ const SCALE = 5;
 const WEBGL = "webgl";
 const TRIANGLE_STRIP = 5;
 
+const normalizingFactor = Math.max(WIDTH, HEIGHT);
+
 const sketch = (s: any) => {
   s.setup = () => {
     s.createCanvas(WIDTH, HEIGHT, WEBGL);
@@ -19,7 +21,8 @@ const sketch = (s: any) => {
     for (let y = 0; y < HEIGHT; y += SCALE) {
       s.beginShape(TRIANGLE_STRIP);
       for (let x = 0; x < WIDTH; x += SCALE) {
-        const height = getNoiseValue(x, y) * 128;
+        const height =
+          getNoiseValue(x / normalizingFactor, y / normalizingFactor) * 128;
         s.vertex(x, y, height);
       }
       s.endShape();

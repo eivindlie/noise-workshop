@@ -3,6 +3,7 @@ import { BACKGROUND, HEIGHT, WIDTH } from "../constants";
 import { getNoiseValue } from "../getNoiseValue";
 
 const RECT_SIZE = 2;
+const normalizingFactor = Math.max(WIDTH, HEIGHT);
 
 const sketch = (s: any) => {
   s.setup = () => {
@@ -12,7 +13,9 @@ const sketch = (s: any) => {
 
     for (let y = 0; y < HEIGHT; y += RECT_SIZE) {
       for (let x = 0; x < WIDTH; x += RECT_SIZE) {
-        const intensity = getNoiseValue(x, y) * 128 + 127;
+        const intensity =
+          getNoiseValue(x / normalizingFactor, y / normalizingFactor) * 128 +
+          127;
         s.fill(intensity);
         s.rect(x, y, RECT_SIZE, RECT_SIZE);
       }
